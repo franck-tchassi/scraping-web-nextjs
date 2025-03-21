@@ -2,7 +2,8 @@
 
 # 🚀 Scraper LeBonCoin : Vélo Électrique
 Ce projet permet de scraper les 10 annonces les plus récentes de vélos électriques sur LeBonCoin en utilisant Next.js, Prisma, Puppeteer et BrightData.
-![image](https://github.com/user-attachments/assets/ce15e172-f790-4c38-812f-2af440d2a9bf)
+![image](https://github.com/user-attachments/assets/022ce481-cfdd-401c-b75c-eba3106a5eb8)
+
 
 ## 📌 Fonctionnalités
 ✅ Scrape les 10 annonces les plus récentes de vélos électriques sur LeBonCoin.
