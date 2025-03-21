@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col gap-4 py-32 max-w-4xl  m-auto ">
       <h1 className="text-center font-bold text-4xl bg-gradient-to-b from-teal-500 via-purple-500 to-red-500 text-transparent bg-clip-text">
-      Scraper des 10 Dernières Annonces de Vélos Électriques sur LeBonCoin
+      Scraper les 10 résultats les plus récents de Vélos Électriques sur LeBonCoin
       </h1>
       <ul className="flex flex-col space-y-4">
         {bikes.map(bike => (
