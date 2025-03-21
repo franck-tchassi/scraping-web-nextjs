@@ -1,0 +1,22 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Bike {
+  id          String   @id @default(uuid()) // ID unique pour chaque vélo
+  title       String   // Titre de l'annonce
+  price       String   // Prix du vélo
+  link        String   // Lien vers l'annonce
+  logo        String?
+  date        DateTime
+  createdAt   DateTime @default(now()) // Date d'ajout dans la base
+}
