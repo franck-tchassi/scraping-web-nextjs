@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alert : prendre les informations de connexion de la base de donnée et de brightdata le mettre dans le fichier  ** .env **
 
-## Getting Started
 
-First, run the development server:
+# 🚀 Scraper LeBonCoin : Vélo Électrique
+Ce projet permet de scraper les 10 annonces les plus récentes de vélos électriques sur LeBonCoin en utilisant Next.js, Prisma, Puppeteer et BrightData.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📌 Fonctionnalités
+✅ Scrape les 10 annonces les plus récentes de vélos électriques sur LeBonCoin.
+✅ Stocke les résultats dans une base de données PostgreSQL via Prisma.
+✅ Automatisation de l'envoi de messages aux vendeurs.
+✅ Utilisation de BrightData pour contourner les restrictions et améliorer le scraping.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Technologies utilisées
+Next.js : Framework React pour l'interface utilisateur.
+Prisma : ORM pour interagir avec PostgreSQL.
+Puppeteer : Automatisation du navigateur pour scraper les annonces.
+BrightData : Proxy pour contourner les restrictions du site.
+PostgreSQL : Base de données pour stocker les annonces récupérées.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## 🔑 Configuration des variables d’environnement
+Avant de lancer le projet, configure ton fichier .env :
 
-To learn more about Next.js, take a look at the following resources:
+Base de données PostgreSQL
+**DATABASE_URL="postgresql://postgres:12Abcdef%40@localhost:5432/leboncoin-scraping"**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Clé API BrightData (remplace par ta propre clé)
+**BRIGHTDATA_AUTH="brd-customer-hl_e889d317-zone-scraping_browser1:5kyjbxj9c4bt"**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## 🚀 Installation et exécution
+1️⃣ Installation des dépendances
+Assure-toi d’avoir Node.js installé, puis exécute :
+**npm install**
+**npx prisma migrate dev --name init**
+**npm run dev**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📡 Fonctionnement du Scraper
+1️⃣ Connexion à BrightData via Puppeteer.
+2️⃣ Accès aux annonces de vélos électriques sur LeBonCoin.
+3️⃣ Filtrage des 10 annonces les plus récentes.
+4️⃣ Stockage des résultats dans PostgreSQL via Prisma.
+5️⃣ Automatisation de l’envoi de messages aux vendeurs.
