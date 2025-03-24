@@ -1,13 +1,19 @@
-import puppeteer, { Browser } from 'puppeteer-core';
+import puppeteer, { Browser } from 'puppeteer';
 import { NextResponse } from "next/server";
 import { Bike } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 
-const BROWSER_WS = `wss://${process.env.BRIGHTDATA_AUTH}@brd.superproxy.io:9222`;
 const URL = "https://www.leboncoin.fr/recherche?category=55&text=velo+electrique&kst=r&from=rs";
 
 export const GET = async (req: Request, res: Response) => {
-    const browser = await puppeteer.connect({ browserWSEndpoint: BROWSER_WS });
+    const browser = await puppeteer.launch({
+        headless: true, 
+        args: [
+            "--no-sandbox", // Sécuriser le processus
+            "--disable-setuid-sandbox", // Désactiver l'accès pour certains utilisateurs
+            "--disable-blink-features=AutomationControlled" // Contourner certaines détections de bot
+        ]
+    });
 
     const bikes = await getLeboncoinProducts(browser);
     
@@ -24,6 +30,17 @@ export const GET = async (req: Request, res: Response) => {
 
 const getLeboncoinProducts = async (instance: Browser) => {
     const page = await instance.newPage();
+
+    // Ajouter un user-agent pour simuler un vrai utilisateur
+    await page.setUserAgent(
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    );
+
+    // Ajouter des headers HTTP pour simuler une requête d'un vrai utilisateur
+    await page.setExtraHTTPHeaders({
+        "accept-language": "fr-FR,fr;q=0.9,en;q=0.8",
+    });
+
 
     // Charger la page
     await page.goto(URL, { waitUntil: 'networkidle2'});
